@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='Model/css/main.css')}}">
+    <title>App</title>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">KV Marketplace</a>
+            <ul class="navbar-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="split left">
+        <div class="centered">
+            <img src="{{ url_for('static', filename='Products/Prdt1.jpg') }}" alt="">
+        </div>        
+    </div>
+
+    <div class="split right">
+        <div class="container mt-5 mb-5">
+            <div class="d-flex justify-content-center row">
+                <h3 class="styled-heading">【ALLGOOD】New Spring Soft Sole Running Shoes</h3>
+                <div class="d-flex flex-column col-md-8">
+                    <label for="">Positive reviews : {{data.positive}}</label>
+                </div>
+                <div class="d-flex flex-column col-md-8">
+                    <label for="">Negative reviews : {{data.negative}}</label>
+                </div>
+                <div>
+                    <form method="post">
+                        <textarea name="text"></textarea>
+                        <input type="submit">
+                    </form>
+                </div>
+                <br>
+                <!-- Reviews Section -->
+                <div class="coment-bottom">
+                    <h3>Reviews</h3>
+                    {% for review in data.reviews %}
+                        <div class="commented-section">
+                            <div class="commented-user">
+                            </div>
+                            <div class="text-content">
+                                <span>{{ review }}</span>
+                            </div>
+                            <hr/>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
